@@ -1,14 +1,19 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C63a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Sleeper" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,8 +21,59 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="lHJ-5M-FvB">
+                                <rect key="frame" x="0.0" y="451" width="375" height="216"/>
+                                <date key="date" timeIntervalSinceReferenceDate="503422046.27568603">
+                                    <!--2016-12-14 15:27:26 +0000-->
+                                </date>
+                                <connections>
+                                    <action selector="onDidChangeDateWithSender:" destination="BYZ-38-t0r" eventType="valueChanged" id="dHf-Un-0Eb"/>
+                                </connections>
+                            </datePicker>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="mV0-FC-f27">
+                                <rect key="frame" x="98" y="415" width="179" height="29"/>
+                                <segments>
+                                    <segment title="Went to Bed"/>
+                                    <segment title="Woke Up"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentChangedWithSender:" destination="BYZ-38-t0r" eventType="valueChanged" id="tOY-pt-93x"/>
+                                </connections>
+                            </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dC6-LJ-4aU">
+                                <rect key="frame" x="325" y="414" width="34" height="30"/>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="saveSleepWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xCB-An-Cq5"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MzS-2z-bMW">
+                                <rect key="frame" x="16" y="414" width="31" height="30"/>
+                                <state key="normal" title="Now"/>
+                                <connections>
+                                    <action selector="makeDateNowWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="e8B-YZ-LBQ"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="lHJ-5M-FvB" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="7ed-EB-Xth"/>
+                            <constraint firstItem="MzS-2z-bMW" firstAttribute="centerY" secondItem="mV0-FC-f27" secondAttribute="centerY" id="EWm-pa-GxE"/>
+                            <constraint firstItem="lHJ-5M-FvB" firstAttribute="top" secondItem="mV0-FC-f27" secondAttribute="bottom" constant="8" id="HY3-K8-oKV"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="MzS-2z-bMW" secondAttribute="leading" id="Igv-RG-iAY"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="lHJ-5M-FvB" secondAttribute="trailing" constant="-16" id="O7K-Sc-jWE"/>
+                            <constraint firstItem="dC6-LJ-4aU" firstAttribute="centerY" secondItem="mV0-FC-f27" secondAttribute="centerY" id="cnv-Op-5lj"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="dC6-LJ-4aU" secondAttribute="trailing" id="ie0-Qf-Lfh"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="lHJ-5M-FvB" secondAttribute="bottom" id="u5T-we-cZ1"/>
+                            <constraint firstItem="mV0-FC-f27" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vGW-yA-0fZ"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="datePicker" destination="lHJ-5M-FvB" id="o28-GT-Pyb"/>
+                        <outlet property="saveButton" destination="dC6-LJ-4aU" id="OHi-9l-ASB"/>
+                        <outlet property="segment" destination="mV0-FC-f27" id="3X6-0E-56L"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
