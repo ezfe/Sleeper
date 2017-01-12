@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C63a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D25a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -22,61 +22,92 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="lHJ-5M-FvB">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bP4-Py-btW">
+                                <rect key="frame" x="230" y="617" width="129" height="30"/>
+                                <state key="normal" title="View Sleep History"/>
+                                <connections>
+                                    <action selector="openHealthApp" destination="BYZ-38-t0r" eventType="touchUpInside" id="eXa-gQ-O09"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P02-wW-r0N">
+                                <rect key="frame" x="147" y="223" width="80" height="30"/>
+                                <state key="normal" title="Go to Sleep"/>
+                                <connections>
+                                    <action selector="sleepButtonPress" destination="BYZ-38-t0r" eventType="touchUpInside" id="9Jj-yI-w6V"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vpR-2o-CK0">
+                                <rect key="frame" x="156" y="261" width="62" height="30"/>
+                                <state key="normal" title="Wake Up"/>
+                                <connections>
+                                    <action selector="wakeButtonPress" destination="BYZ-38-t0r" eventType="touchUpInside" id="IPM-7M-by5"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Asleep Since ##" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xkw-Hy-Oo9">
+                                <rect key="frame" x="125" y="299" width="124" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6CL-N6-PLe">
+                                <rect key="frame" x="147" y="413" width="81" height="30"/>
+                                <state key="normal" title="Woke Up At"/>
+                                <connections>
+                                    <action selector="wakeAtButtonPress" destination="BYZ-38-t0r" eventType="touchUpInside" id="nat-ON-T7e"/>
+                                </connections>
+                            </button>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="6Xp-rt-rAK">
                                 <rect key="frame" x="0.0" y="451" width="375" height="216"/>
-                                <date key="date" timeIntervalSinceReferenceDate="503422046.27568603">
-                                    <!--2016-12-14 15:27:26 +0000-->
+                                <date key="date" timeIntervalSinceReferenceDate="505932544.678756">
+                                    <!--2017-01-12 16:49:04 +0000-->
                                 </date>
-                                <connections>
-                                    <action selector="onDidChangeDateWithSender:" destination="BYZ-38-t0r" eventType="valueChanged" id="dHf-Un-0Eb"/>
-                                </connections>
                             </datePicker>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="mV0-FC-f27">
-                                <rect key="frame" x="98" y="415" width="179" height="29"/>
-                                <segments>
-                                    <segment title="Went to Bed"/>
-                                    <segment title="Woke Up"/>
-                                </segments>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pw9-h9-Sao">
+                                <rect key="frame" x="164" y="413" width="46" height="30"/>
+                                <state key="normal" title="Save..."/>
                                 <connections>
-                                    <action selector="segmentChangedWithSender:" destination="BYZ-38-t0r" eventType="valueChanged" id="tOY-pt-93x"/>
-                                </connections>
-                            </segmentedControl>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dC6-LJ-4aU">
-                                <rect key="frame" x="325" y="414" width="34" height="30"/>
-                                <state key="normal" title="Save"/>
-                                <connections>
-                                    <action selector="saveSleepWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xCB-An-Cq5"/>
+                                    <action selector="wakeAtSaveButtonPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="poK-EA-6CT"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MzS-2z-bMW">
-                                <rect key="frame" x="16" y="414" width="31" height="30"/>
-                                <state key="normal" title="Now"/>
-                                <connections>
-                                    <action selector="makeDateNowWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="e8B-YZ-LBQ"/>
-                                </connections>
-                            </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="qL1-5D-W5s">
+                                <rect key="frame" x="177" y="266" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.88217000000000001" green="0.88535200000000003" blue="0.90426700000000004" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="lHJ-5M-FvB" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="7ed-EB-Xth"/>
-                            <constraint firstItem="MzS-2z-bMW" firstAttribute="centerY" secondItem="mV0-FC-f27" secondAttribute="centerY" id="EWm-pa-GxE"/>
-                            <constraint firstItem="lHJ-5M-FvB" firstAttribute="top" secondItem="mV0-FC-f27" secondAttribute="bottom" constant="8" id="HY3-K8-oKV"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="MzS-2z-bMW" secondAttribute="leading" id="Igv-RG-iAY"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="lHJ-5M-FvB" secondAttribute="trailing" constant="-16" id="O7K-Sc-jWE"/>
-                            <constraint firstItem="dC6-LJ-4aU" firstAttribute="centerY" secondItem="mV0-FC-f27" secondAttribute="centerY" id="cnv-Op-5lj"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="dC6-LJ-4aU" secondAttribute="trailing" id="ie0-Qf-Lfh"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="lHJ-5M-FvB" secondAttribute="bottom" id="u5T-we-cZ1"/>
-                            <constraint firstItem="mV0-FC-f27" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vGW-yA-0fZ"/>
+                            <constraint firstItem="vpR-2o-CK0" firstAttribute="centerX" secondItem="P02-wW-r0N" secondAttribute="centerX" id="36T-to-clO"/>
+                            <constraint firstItem="Xkw-Hy-Oo9" firstAttribute="top" secondItem="vpR-2o-CK0" secondAttribute="bottom" constant="8" id="Bfg-5u-ajz"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="bP4-Py-btW" secondAttribute="bottom" constant="20" id="Bya-zi-M9b"/>
+                            <constraint firstItem="Xkw-Hy-Oo9" firstAttribute="centerX" secondItem="P02-wW-r0N" secondAttribute="centerX" id="Dbz-uA-IS8"/>
+                            <constraint firstItem="Pw9-h9-Sao" firstAttribute="centerX" secondItem="6CL-N6-PLe" secondAttribute="centerX" id="GSc-wm-vsC"/>
+                            <constraint firstItem="qL1-5D-W5s" firstAttribute="centerX" secondItem="vpR-2o-CK0" secondAttribute="centerX" id="JhB-u5-ODH"/>
+                            <constraint firstItem="6Xp-rt-rAK" firstAttribute="top" secondItem="6CL-N6-PLe" secondAttribute="bottom" constant="8" id="KIE-E7-H6V"/>
+                            <constraint firstItem="P02-wW-r0N" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ar6-V7-XVu"/>
+                            <constraint firstItem="P02-wW-r0N" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="203" id="fwm-Bd-J2O"/>
+                            <constraint firstItem="vpR-2o-CK0" firstAttribute="top" secondItem="P02-wW-r0N" secondAttribute="bottom" constant="8" id="gKM-bL-dyo"/>
+                            <constraint firstAttribute="trailing" secondItem="6Xp-rt-rAK" secondAttribute="trailing" id="iBb-fR-46h"/>
+                            <constraint firstItem="6CL-N6-PLe" firstAttribute="centerX" secondItem="P02-wW-r0N" secondAttribute="centerX" id="igh-zn-Wb9"/>
+                            <constraint firstItem="qL1-5D-W5s" firstAttribute="centerY" secondItem="vpR-2o-CK0" secondAttribute="centerY" id="kjr-qS-wlP"/>
+                            <constraint firstItem="6Xp-rt-rAK" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="lN3-9C-qmc"/>
+                            <constraint firstItem="Pw9-h9-Sao" firstAttribute="centerY" secondItem="6CL-N6-PLe" secondAttribute="centerY" id="owZ-F8-qfc"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="6Xp-rt-rAK" secondAttribute="bottom" id="rFy-AB-piV"/>
+                            <constraint firstItem="bP4-Py-btW" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="rNj-Xn-Q6s"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="datePicker" destination="lHJ-5M-FvB" id="o28-GT-Pyb"/>
-                        <outlet property="saveButton" destination="dC6-LJ-4aU" id="OHi-9l-ASB"/>
-                        <outlet property="segment" destination="mV0-FC-f27" id="3X6-0E-56L"/>
+                        <outlet property="openHealthButton" destination="bP4-Py-btW" id="b2c-13-o3e"/>
+                        <outlet property="saveIndicator" destination="qL1-5D-W5s" id="fFI-kF-0Pk"/>
+                        <outlet property="sleepButton" destination="P02-wW-r0N" id="9q1-Lo-yha"/>
+                        <outlet property="sleepLabel" destination="Xkw-Hy-Oo9" id="VMd-wP-6t7"/>
+                        <outlet property="wakeAtButton" destination="6CL-N6-PLe" id="eeg-8q-akI"/>
+                        <outlet property="wakeAtPicker" destination="6Xp-rt-rAK" id="lkw-2F-7Kc"/>
+                        <outlet property="wakeAtSaveButton" destination="Pw9-h9-Sao" id="h3T-Kb-tgU"/>
+                        <outlet property="wakeButton" destination="vpR-2o-CK0" id="vWI-n6-dJZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="117.59999999999999" y="123.68815592203899"/>
         </scene>
     </scenes>
 </document>
