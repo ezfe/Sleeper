@@ -26,6 +26,8 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate {
     
     @IBOutlet var saveIndicator: UIActivityIndicatorView!
     
+    @IBOutlet var cancelButton: UIButton!
+    
     let bedToSleep: TimeInterval = 60*15 /* 15 minutes */
     let sleepToBed: TimeInterval = 60*5 /* 5 minutes */
     
@@ -82,37 +84,48 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate {
             let sleepStart = bedStart.addingTimeInterval(self.bedToSleep)
             let sleepEnd = bedEnd.addingTimeInterval(-self.sleepToBed)
             
-            if bedEnd > bedStart && sleepEnd > sleepStart {
-                
-                self.save(.asleep, from: sleepStart, to: sleepEnd, completion: { (sleepSuccess, sleepError) in
-                    self.save(.inBed, from: bedStart, to: bedEnd, completion: { (bedSuccess, bedError) in
-                        let alertTitle = "Unable to Save"
-                        var alertString = "An unknown issue occurred"
-                        
-                        if !sleepSuccess || !bedSuccess {
-                            if let error = sleepError, !sleepSuccess {
-                                alertString = "\(error)"
-                            } else {
-                                if let error = bedError, !bedSuccess {
+            /* Check if we can save in-bed */
+            if bedEnd > bedStart {
+                self.save(.inBed, from: bedStart, to: bedEnd, completion: { (bedSuccess, bedError) in
+                    
+                    /* Check if we can save sleep */
+                    if sleepEnd > sleepStart {
+                        self.save(.asleep, from: sleepStart, to: sleepEnd, completion: { (sleepSuccess, sleepError) in
+                            let alertTitle = "Unable to Save"
+                            var alertString = "An unknown issue occurred"
+                            
+                            if !sleepSuccess || !bedSuccess {
+                                if let error = sleepError, !sleepSuccess {
                                     alertString = "\(error)"
+                                } else {
+                                    if let error = bedError, !bedSuccess {
+                                        alertString = "\(error)"
+                                    }
                                 }
+                                
+                                self.alertUser(title: alertTitle, body: alertString)
+                            } else {
+                                print("Saved all Health information")
                             }
                             
-                            self.alertUser(title: alertTitle, body: alertString)
-                        } else {
-                            print("Saved all Health information")
-                        }
+                            self.sleepPressedAt = nil
+                            self.refreshUI(sleeping: false)
+                        })
+                    } else {
+                        /* we cannot save sleep, but we can save in-bed */
+                        self.alertUser(title: "Only Saved In-Bed", body: "You cannot sleep for less than 20 minutes")
+                        
+                        print("Cancelled due to 20 minute timer (asleep)")
                         
                         self.sleepPressedAt = nil
                         self.refreshUI(sleeping: false)
-                    })
+                    }
                 })
-                
             } else {
+                /* We cannot save in-bed or sleep */
+                self.alertUser(title: "Unable to Save", body: "You were in bed for negative time")
                 
-                self.alertUser(title: "Unable to Save", body: "You cannot sleep for less than 20 minutes")
-                
-                print("Cancelled due to 20 minute timer")
+                print("Cancelled due to 20 minute timer (in-bed)")
                 
                 self.sleepPressedAt = nil
                 self.refreshUI(sleeping: false)
@@ -131,6 +144,8 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate {
         wakeAtSaveButton.isHidden = true
         
         saveIndicator.stopAnimating()
+        
+        cancelButton.isHidden = !sleeping
         
         if let date = sleepPressedAt, sleeping {
             let formatter = DateFormatter()
@@ -163,6 +178,8 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate {
         openHealthButton.isHidden = true
         wakeAtPicker.isHidden = true
         wakeAtSaveButton.isHidden = true
+        
+        cancelButton.isHidden = true
     }
     
     @IBAction func sleepButtonPress() {
@@ -221,6 +238,8 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate {
     }
     
     @IBAction func wakeButtonPress() {
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        
         if let bedStart = sleepPressedAt {
             save(from: bedStart, to: Date())
         } else {
@@ -241,6 +260,8 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate {
     @IBAction func wakeAtSaveButtonPressed() {
         let bedEnd = wakeAtPicker.date
         
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        
         if let bedStart = sleepPressedAt {
             save(from: bedStart, to: bedEnd)
         } else {
@@ -259,6 +280,11 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate {
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
+    }
+    
+    @IBAction func cancelButtonPressed() {
+        sleepPressedAt = nil
+        refreshUI(sleeping: false)
     }
 }
 
