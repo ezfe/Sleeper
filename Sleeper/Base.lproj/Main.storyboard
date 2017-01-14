@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D25a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D25a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="xqR-JI-Kap">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Sleeper-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Sleeper" customModuleProvider="target" sceneMemberID="viewController">
@@ -22,15 +21,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bP4-Py-btW">
-                                <rect key="frame" x="230" y="617" width="129" height="30"/>
-                                <state key="normal" title="View Sleep History"/>
-                                <connections>
-                                    <action selector="openHealthApp" destination="BYZ-38-t0r" eventType="touchUpInside" id="eXa-gQ-O09"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P02-wW-r0N">
-                                <rect key="frame" x="147" y="318.5" width="80" height="30"/>
+                                <rect key="frame" x="147" y="319" width="80" height="30"/>
                                 <state key="normal" title="Go to Sleep"/>
                                 <connections>
                                     <action selector="sleepButtonPress" destination="BYZ-38-t0r" eventType="touchUpInside" id="9Jj-yI-w6V"/>
@@ -43,79 +35,103 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6CL-N6-PLe">
-                                <rect key="frame" x="147" y="413" width="81" height="30"/>
+                                <rect key="frame" x="147" y="369" width="81" height="30"/>
                                 <state key="normal" title="Woke Up At"/>
                                 <connections>
                                     <action selector="wakeAtButtonPress" destination="BYZ-38-t0r" eventType="touchUpInside" id="nat-ON-T7e"/>
                                 </connections>
                             </button>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="6Xp-rt-rAK">
-                                <rect key="frame" x="0.0" y="451" width="375" height="216"/>
-                                <date key="date" timeIntervalSinceReferenceDate="505932544.678756">
-                                    <!--2017-01-12 16:49:04 +0000-->
-                                </date>
-                            </datePicker>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pw9-h9-Sao">
-                                <rect key="frame" x="164" y="413" width="46" height="30"/>
-                                <state key="normal" title="Save..."/>
-                                <connections>
-                                    <action selector="wakeAtSaveButtonPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="poK-EA-6CT"/>
-                                </connections>
-                            </button>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="qL1-5D-W5s">
-                                <rect key="frame" x="177" y="323" width="20" height="20"/>
+                                <rect key="frame" x="177" y="324" width="20" height="20"/>
                             </activityIndicatorView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CuW-g8-bTg">
-                                <rect key="frame" x="16" y="617" width="90" height="30"/>
-                                <state key="normal" title="Cancel Sleep"/>
-                                <connections>
-                                    <action selector="cancelButtonPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="PFN-oq-sjz"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vpR-2o-CK0">
-                                <rect key="frame" x="156" y="318" width="62" height="30"/>
+                                <rect key="frame" x="156" y="319" width="62" height="30"/>
                                 <state key="normal" title="Wake Up"/>
                                 <connections>
                                     <action selector="wakeButtonPress" destination="BYZ-38-t0r" eventType="touchUpInside" id="IPM-7M-by5"/>
                                 </connections>
                             </button>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rvq-fD-X7g">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <items>
+                                    <barButtonItem title="Cancel" id="Fme-F9-mnf">
+                                        <connections>
+                                            <action selector="cancelButtonPressed" destination="BYZ-38-t0r" id="TCG-qj-Vlk"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem systemItem="flexibleSpace" id="Klh-ls-yM7"/>
+                                    <barButtonItem title="Save" id="yja-dZ-tbS">
+                                        <connections>
+                                            <action selector="wakeAtSaveButtonPressed" destination="BYZ-38-t0r" id="F1r-rd-E2n"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="6Xp-rt-rAK">
+                                <rect key="frame" x="0.0" y="407" width="375" height="216"/>
+                                <date key="date" timeIntervalSinceReferenceDate="505932544.678756">
+                                    <!--2017-01-12 16:49:04 +0000-->
+                                </date>
+                            </datePicker>
                         </subviews>
                         <color key="backgroundColor" red="0.88217000000000001" green="0.88535200000000003" blue="0.90426700000000004" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="vpR-2o-CK0" firstAttribute="centerX" secondItem="P02-wW-r0N" secondAttribute="centerX" id="36T-to-clO"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="bP4-Py-btW" secondAttribute="bottom" constant="20" id="Bya-zi-M9b"/>
                             <constraint firstItem="vpR-2o-CK0" firstAttribute="centerY" secondItem="P02-wW-r0N" secondAttribute="centerY" id="C5j-CT-J9p"/>
                             <constraint firstItem="Xkw-Hy-Oo9" firstAttribute="centerX" secondItem="P02-wW-r0N" secondAttribute="centerX" id="Dbz-uA-IS8"/>
-                            <constraint firstItem="Pw9-h9-Sao" firstAttribute="centerX" secondItem="6CL-N6-PLe" secondAttribute="centerX" id="GSc-wm-vsC"/>
                             <constraint firstItem="qL1-5D-W5s" firstAttribute="centerX" secondItem="vpR-2o-CK0" secondAttribute="centerX" id="JhB-u5-ODH"/>
                             <constraint firstItem="6Xp-rt-rAK" firstAttribute="top" secondItem="6CL-N6-PLe" secondAttribute="bottom" constant="8" id="KIE-E7-H6V"/>
+                            <constraint firstAttribute="trailing" secondItem="Rvq-fD-X7g" secondAttribute="trailing" id="MYw-GA-UTG"/>
+                            <constraint firstItem="Rvq-fD-X7g" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Rfg-3c-1YR"/>
                             <constraint firstItem="P02-wW-r0N" firstAttribute="top" secondItem="Xkw-Hy-Oo9" secondAttribute="bottom" constant="8.5" id="U8v-4z-BQu"/>
                             <constraint firstItem="P02-wW-r0N" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ar6-V7-XVu"/>
                             <constraint firstAttribute="trailing" secondItem="6Xp-rt-rAK" secondAttribute="trailing" id="iBb-fR-46h"/>
                             <constraint firstItem="6CL-N6-PLe" firstAttribute="centerX" secondItem="P02-wW-r0N" secondAttribute="centerX" id="igh-zn-Wb9"/>
                             <constraint firstItem="qL1-5D-W5s" firstAttribute="centerY" secondItem="vpR-2o-CK0" secondAttribute="centerY" id="kjr-qS-wlP"/>
                             <constraint firstItem="6Xp-rt-rAK" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="lN3-9C-qmc"/>
-                            <constraint firstItem="Pw9-h9-Sao" firstAttribute="centerY" secondItem="6CL-N6-PLe" secondAttribute="centerY" id="owZ-F8-qfc"/>
                             <constraint firstItem="P02-wW-r0N" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="qnS-37-b9r"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="6Xp-rt-rAK" secondAttribute="bottom" id="rFy-AB-piV"/>
-                            <constraint firstItem="bP4-Py-btW" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="rNj-Xn-Q6s"/>
-                            <constraint firstItem="CuW-g8-bTg" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="vpo-d1-iZe"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="CuW-g8-bTg" secondAttribute="bottom" constant="20" id="ypW-v9-S6k"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Rvq-fD-X7g" secondAttribute="bottom" id="uQg-Cb-qeZ"/>
+                            <constraint firstItem="Rvq-fD-X7g" firstAttribute="top" secondItem="6Xp-rt-rAK" secondAttribute="bottom" id="wa0-pX-lJp"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Sleeper" id="XQh-5i-uRD">
+                        <barButtonItem key="rightBarButtonItem" title="History" id="3LF-KR-9pz">
+                            <connections>
+                                <action selector="openHealthApp" destination="BYZ-38-t0r" id="s0r-eH-UGN"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <outlet property="cancelButton" destination="CuW-g8-bTg" id="2Jd-QU-5BQ"/>
-                        <outlet property="openHealthButton" destination="bP4-Py-btW" id="b2c-13-o3e"/>
-                        <outlet property="saveIndicator" destination="qL1-5D-W5s" id="fFI-kF-0Pk"/>
+                        <outlet property="cancelButton" destination="Fme-F9-mnf" id="tlG-kT-ZiU"/>
+                        <outlet property="openHealthButton" destination="3LF-KR-9pz" id="D5b-Z3-dg4"/>
+                        <outlet property="saveIndicator" destination="qL1-5D-W5s" id="DEF-pE-G9U"/>
                         <outlet property="sleepButton" destination="P02-wW-r0N" id="9q1-Lo-yha"/>
                         <outlet property="sleepLabel" destination="Xkw-Hy-Oo9" id="VMd-wP-6t7"/>
                         <outlet property="wakeAtButton" destination="6CL-N6-PLe" id="eeg-8q-akI"/>
                         <outlet property="wakeAtPicker" destination="6Xp-rt-rAK" id="lkw-2F-7Kc"/>
-                        <outlet property="wakeAtSaveButton" destination="Pw9-h9-Sao" id="h3T-Kb-tgU"/>
+                        <outlet property="wakeAtSaveButton" destination="yja-dZ-tbS" id="baX-Pc-yUg"/>
                         <outlet property="wakeButton" destination="vpR-2o-CK0" id="vWI-n6-dJZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1056.8" y="123.68815592203899"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="oYV-HT-aPQ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xqR-JI-Kap" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="r4m-WC-fa4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="yMQ-7U-WQ4"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QAy-QE-cIx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="117.59999999999999" y="123.68815592203899"/>
         </scene>

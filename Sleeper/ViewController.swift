@@ -17,8 +17,8 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate {
     @IBOutlet var sleepButton: UIButton!
     @IBOutlet var wakeButton: UIButton!
     @IBOutlet var wakeAtButton: UIButton!
-    @IBOutlet var wakeAtSaveButton: UIButton!
-    @IBOutlet var openHealthButton: UIButton!
+    @IBOutlet var wakeAtSaveButton: UIBarButtonItem!
+    @IBOutlet var openHealthButton: UIBarButtonItem!
     
     @IBOutlet var sleepLabel: UILabel!
     
@@ -26,7 +26,7 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate {
     
     @IBOutlet var saveIndicator: UIActivityIndicatorView!
     
-    @IBOutlet var cancelButton: UIButton!
+    @IBOutlet var cancelButton: UIBarButtonItem!
     
     let bedToSleep: TimeInterval = 60*15 /* 15 minutes */
     let sleepToBed: TimeInterval = 60*5 /* 5 minutes */
@@ -139,13 +139,13 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate {
         wakeAtButton.isHidden = !sleeping
         sleepLabel.isHidden = !sleeping
         
-        openHealthButton.isHidden = false
+        openHealthButton.isEnabled = true
         wakeAtPicker.isHidden = true
-        wakeAtSaveButton.isHidden = true
+        wakeAtSaveButton.isEnabled = false
         
         saveIndicator.stopAnimating()
         
-        cancelButton.isHidden = !sleeping
+        cancelButton.isEnabled = sleeping
         
         if let date = sleepPressedAt, sleeping {
             let formatter = DateFormatter()
@@ -175,11 +175,11 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate {
         
         saveIndicator.stopAnimating()
         
-        openHealthButton.isHidden = true
+        openHealthButton.isEnabled = false
         wakeAtPicker.isHidden = true
-        wakeAtSaveButton.isHidden = true
+        wakeAtSaveButton.isEnabled = false
         
-        cancelButton.isHidden = true
+        cancelButton.isEnabled = false
     }
     
     @IBAction func sleepButtonPress() {
@@ -251,10 +251,12 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate {
     @IBAction func wakeAtButtonPress() {
         hideAll()
         
+        cancelButton.isEnabled = true
+        
         wakeAtPicker.date = sleepPressedAt?.addingTimeInterval(8*60*60) ?? Date()
         
         wakeAtPicker.isHidden = false
-        wakeAtSaveButton.isHidden = false
+        wakeAtSaveButton.isEnabled = true
     }
     
     @IBAction func wakeAtSaveButtonPressed() {
