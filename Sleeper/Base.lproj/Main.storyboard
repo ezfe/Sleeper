@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D25a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="xqR-JI-Kap">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E163f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="xqR-JI-Kap">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -44,8 +44,8 @@
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="qL1-5D-W5s">
                                 <rect key="frame" x="177" y="324" width="20" height="20"/>
                             </activityIndicatorView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vpR-2o-CK0">
-                                <rect key="frame" x="156" y="319" width="62" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vpR-2o-CK0">
+                                <rect key="frame" x="235" y="318" width="62" height="30"/>
                                 <state key="normal" title="Wake Up"/>
                                 <connections>
                                     <action selector="wakeButtonPress" destination="BYZ-38-t0r" eventType="touchUpInside" id="IPM-7M-by5"/>
@@ -73,6 +73,14 @@
                                     <!--2017-01-12 16:49:04 +0000-->
                                 </date>
                             </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pce-2u-bgX">
+                                <rect key="frame" x="134.5" y="369" width="106" height="30"/>
+                                <state key="normal" title="Went To Bed At"/>
+                                <connections>
+                                    <action selector="sleepAtButtonPress" destination="BYZ-38-t0r" eventType="touchUpInside" id="6Gh-8A-q3H"/>
+                                    <action selector="wakeAtButtonPress" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZSY-jU-zfQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.88217000000000001" green="0.88535200000000003" blue="0.90426700000000004" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -84,8 +92,10 @@
                             <constraint firstAttribute="trailing" secondItem="Rvq-fD-X7g" secondAttribute="trailing" id="MYw-GA-UTG"/>
                             <constraint firstItem="Rvq-fD-X7g" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Rfg-3c-1YR"/>
                             <constraint firstItem="P02-wW-r0N" firstAttribute="top" secondItem="Xkw-Hy-Oo9" secondAttribute="bottom" constant="8.5" id="U8v-4z-BQu"/>
+                            <constraint firstItem="pce-2u-bgX" firstAttribute="centerX" secondItem="6CL-N6-PLe" secondAttribute="centerX" id="ZV7-T7-u8b"/>
                             <constraint firstItem="P02-wW-r0N" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ar6-V7-XVu"/>
                             <constraint firstAttribute="trailing" secondItem="6Xp-rt-rAK" secondAttribute="trailing" id="iBb-fR-46h"/>
+                            <constraint firstItem="pce-2u-bgX" firstAttribute="centerY" secondItem="6CL-N6-PLe" secondAttribute="centerY" id="ia8-5N-Pdg"/>
                             <constraint firstItem="6CL-N6-PLe" firstAttribute="centerX" secondItem="P02-wW-r0N" secondAttribute="centerX" id="igh-zn-Wb9"/>
                             <constraint firstItem="qL1-5D-W5s" firstAttribute="centerY" secondItem="vpR-2o-CK0" secondAttribute="centerY" id="kjr-qS-wlP"/>
                             <constraint firstItem="6Xp-rt-rAK" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="lN3-9C-qmc"/>
@@ -105,6 +115,7 @@
                         <outlet property="cancelButton" destination="Fme-F9-mnf" id="tlG-kT-ZiU"/>
                         <outlet property="openHealthButton" destination="3LF-KR-9pz" id="D5b-Z3-dg4"/>
                         <outlet property="saveIndicator" destination="qL1-5D-W5s" id="DEF-pE-G9U"/>
+                        <outlet property="sleepAt" destination="pce-2u-bgX" id="amz-Os-f1F"/>
                         <outlet property="sleepButton" destination="P02-wW-r0N" id="9q1-Lo-yha"/>
                         <outlet property="sleepLabel" destination="Xkw-Hy-Oo9" id="VMd-wP-6t7"/>
                         <outlet property="wakeAtButton" destination="6CL-N6-PLe" id="eeg-8q-akI"/>

@@ -15,6 +15,7 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate {
     let defaults = UserDefaults.standard
     
     @IBOutlet var sleepButton: UIButton!
+    @IBOutlet var sleepAt: UIButton!
     @IBOutlet var wakeButton: UIButton!
     @IBOutlet var wakeAtButton: UIButton!
     @IBOutlet var wakeAtSaveButton: UIBarButtonItem!
@@ -135,6 +136,7 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate {
     
     func refreshUI(sleeping: Bool) {
         sleepButton.isHidden = sleeping
+        sleepAt.isHidden = sleeping
         wakeButton.isHidden = !sleeping
         wakeAtButton.isHidden = !sleeping
         sleepLabel.isHidden = !sleeping
@@ -169,6 +171,7 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate {
     
     func hideAll() {
         sleepButton.isHidden = true
+        sleepAt.isHidden = true
         wakeButton.isHidden = true
         wakeAtButton.isHidden = true
         sleepLabel.isHidden = true
@@ -248,6 +251,17 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate {
         }
     }
     
+    @IBAction func sleepAtButtonPress() {
+        hideAll()
+        
+        cancelButton.isEnabled = true
+        
+        wakeAtPicker.date = Date().addingTimeInterval(-8*60*60)
+        
+        wakeAtPicker.isHidden = false
+        wakeAtSaveButton.isEnabled = true
+    }
+    
     @IBAction func wakeAtButtonPress() {
         hideAll()
         
@@ -260,15 +274,15 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate {
     }
     
     @IBAction func wakeAtSaveButtonPressed() {
-        let bedEnd = wakeAtPicker.date
+        let pickerDate = wakeAtPicker.date
         
         UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
         
         if let bedStart = sleepPressedAt {
-            save(from: bedStart, to: bedEnd)
+            save(from: bedStart, to: pickerDate)
         } else {
-            sleepPressedAt = nil
-            refreshUI(sleeping: false)
+            sleepPressedAt = pickerDate
+            refreshUI(sleeping: true)
         }
     }
     
